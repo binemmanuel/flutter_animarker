@@ -364,12 +364,17 @@ class AnimarkerState extends State<Animarker> with TickerProviderStateMixin {
       'didUpdateWidget: ${oldWidget.markers.map((e) => e.rotation).join(',')}',
     );
     if (widget.markers.length < oldWidget.markers.length) {
-        widget.updateMarkers(oldWidget.markers, widget.markers);
-        return;
-      }
-      if (widget.markers.length > oldWidget.markers.length) {
-        _markers.clear();
-      }
+      widget.updateMarkers(oldWidget.markers, widget.markers);
+      return;
+    }
+    /* if (widget.markers.length > oldWidget.markers.length) {
+      _markers.clear();
+    } */
+
+    if (widget.markers != oldWidget.markers) {
+      widget.updateMarkers(oldWidget.markers, widget.markers);
+      return;
+    }
     // if (oldWidget.markers.length > widget.markers.length) {
     //   print('didUpdateWidget: updateMarkers');
     //   widget.updateMarkers(oldWidget.markers, widget.markers);
